@@ -1,0 +1,62 @@
+[
+    {
+        "name": "id",
+        "dbType": "increments",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "title",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true
+    }, 
+    {
+        "name": "description",
+        "dbType": "text",
+        "htmlType": "textarea"
+    },  
+    {
+        "name": "client_id",
+        "dbType": "integer:unsigned:foreign,clients,id",
+        "htmlType": "text",
+        "relation": "mt1,Client,client_id,id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,TimeEntry"
+    },
+    {
+        "name": "users",
+        "type": "relation",
+        "relation": "mtm,Role,user_roles,user_id,role_id"
+    },
+    {
+        "name": "created_at",
+        "dbType": "timestamp",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "updated_at",
+        "dbType": "timestamp",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    }
+]
