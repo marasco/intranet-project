@@ -23,3 +23,9 @@ Route::get('/home', 'HomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('clients', 'ClientController');
+
+Route::resource('projects', 'ProjectController');
+
+Route::resource('timeEntries', 'TimeEntryController');
