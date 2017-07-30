@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ClientDataTable;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Requests\CreateClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 use App\Repositories\ClientRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use App\Http\Controllers\AppBaseController;
 use Response;
 
 class ClientController extends AppBaseController
@@ -24,16 +25,16 @@ class ClientController extends AppBaseController
     /**
      * Display a listing of the Client.
      *
-     * @param Request $request
+     * @param ClientDataTable $clientDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request, ClientDataTable $clientDataTable)
     {
-        $this->clientRepository->pushCriteria(new RequestCriteria($request));
-        $clients = $this->clientRepository->all();
-
-        return view('clients.index')
-            ->with('clients', $clients);
+        foreach ((array) session('flash_notification') as $message){
+        \Log::info(json_encode($message));
+            
+        }
+        return $clientDataTable->render('clients.index');
     }
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Client
  * @package App\Models
- * @version July 29, 2017, 11:26 pm UTC
+ * @version July 29, 2017, 11:34 pm UTC
  */
 class Client extends Model
 {

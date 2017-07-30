@@ -1,4 +1,5 @@
 @foreach ((array) session('flash_notification') as $message)
+<?php if (empty($message[0])) return false; $message = (array)$message[0]; ?>
     @if ($message['overlay'])
         @include('flash::modal', [
             'modalClass' => 'flash-modal',

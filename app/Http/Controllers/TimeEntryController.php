@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\TimeEntryDataTable;
+use App\Http\Requests;
 use App\Http\Requests\CreateTimeEntryRequest;
 use App\Http\Requests\UpdateTimeEntryRequest;
 use App\Repositories\TimeEntryRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use App\Http\Controllers\AppBaseController;
 use Response;
 
 class TimeEntryController extends AppBaseController
@@ -24,16 +24,12 @@ class TimeEntryController extends AppBaseController
     /**
      * Display a listing of the TimeEntry.
      *
-     * @param Request $request
+     * @param TimeEntryDataTable $timeEntryDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(TimeEntryDataTable $timeEntryDataTable)
     {
-        $this->timeEntryRepository->pushCriteria(new RequestCriteria($request));
-        $timeEntries = $this->timeEntryRepository->all();
-
-        return view('time_entries.index')
-            ->with('timeEntries', $timeEntries);
+        return $timeEntryDataTable->render('time_entries.index');
     }
 
     /**
