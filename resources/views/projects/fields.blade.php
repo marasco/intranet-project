@@ -12,8 +12,10 @@
 
 <!-- Client Id Field -->
 <div class="form-group col-sm-6">
+
     {!! Form::label('client_id', 'Client Id:') !!}
-    {!! Form::text('client_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('client_id', $clients , null, ['class' => 'form-control']) !!}
+    {{--!! Form::text('client_id', null, ['class' => 'form-control']) !!--}}
 </div>
 
 <!-- Submit Field -->

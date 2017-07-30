@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ProjectDataTable;
+use App\Models\Client;
 use App\Http\Requests;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -39,7 +40,10 @@ class ProjectController extends AppBaseController
      */
     public function create()
     {
-        return view('projects.create');
+
+        return view('projects.create',[
+            'clients' => Client::pluck('title', 'id')
+        ]);
     }
 
     /**
@@ -97,7 +101,9 @@ class ProjectController extends AppBaseController
             return redirect(route('projects.index'));
         }
 
-        return view('projects.edit')->with('project', $project);
+        return view('projects.edit', [
+            'clients' => Client::pluck('title', 'id')
+        ])->with('project', $project);
     }
 
     /**
